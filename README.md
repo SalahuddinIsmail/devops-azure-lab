@@ -1,1 +1,1 @@
-# devops-azure-lab
+# devops-azure-lab🚀 Auto Deployment is active!
