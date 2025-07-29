@@ -1,1 +1,9 @@
+{
+  "name": "devops-azure-lab",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "echo Hello from Azure VM!"
+  },
+  "dependencies": {}
+}
 
