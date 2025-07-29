@@ -1,25 +1,8 @@
-name: CI/CD Deploy to Azure VM
-
-on:
-  workflow_dispatch:
-
-jobs:
-  deploy:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Deploy to Azure VM via SSH
-        uses: appleboy/ssh-action@v1.0.0
-        with:
-          host: ${{ secrets.AZURE_HOST }}
-          username: ${{ secrets.AZURE_USER }}
-          key: ${{ secrets.AZURE_SSH_KEY }}
-          script: |
-            cd devops-azure-lab
-            git pull origin main
-            sudo docker compose down
-            sudo docker compose up -d --build
+script: |
+  cd devops-azure-lab
+  git pull origin main
+  sudo docker compose down
+  sudo docker compose up -d --build
+  echo "⌛ Testing the API after deployment..."
+  curl -f http://localhost:3000/test-db
 
